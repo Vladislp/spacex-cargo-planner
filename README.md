@@ -19,3 +19,6 @@ ensuring efficient utilization of SpaceX's Starship cargo bays.
 
 1) Clone the repository:
 git clone https://github.com/your-username/spacex-cargo-planner.git
+
+## Logic Diagram
+![Diagram1 drawio](https://github.com/Vladislp/spacex-cargo-planner/assets/42935979/8c3b414e-c4df-4e39-98de-20c6a6ca6a90)
