@@ -23,8 +23,8 @@ const ShipmentList = () => {
 
     return (
         <div className="shipment-list-container">
-            <h1>Shipment list</h1>
-            <table>
+            <h1>Shiping List</h1>
+            <table> 
                 <tbody>
                     {shipments.map((shipment) => (
                         <tr
