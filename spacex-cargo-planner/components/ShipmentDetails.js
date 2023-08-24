@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { calculateCargoBays } from '../utils/cargoUtils';
 
 const ShipmentDetails = ({ shipment }) => {
@@ -7,10 +7,22 @@ const ShipmentDetails = ({ shipment }) => {
 
     // Calculate cargo bays with white color
     const cargoBays = (
-        <span style={{ color: 'white' }}>
+        <span style={{ color: 'white '}}>
             {calculateCargoBays(boxUnits)}
         </span>
-    );
+    )
+
+    // Update boxUnits and cargo bays when the shipment prop changes
+    useEffect(() => {
+        if(shipment.boxes !== null ) {
+            setBoxUnits(shipment.boxes);
+        } else {
+            setBoxUnits("");
+        }
+    }, [shipment]);
+    
+
+
 
     // Parse shipment boxes into options
     const options = shipment.boxes
@@ -26,13 +38,6 @@ const ShipmentDetails = ({ shipment }) => {
     return (
         <div>
             {/* Search input with datalist */}
-            <input
-                type="search"
-                className='search'
-                value={boxUnits}
-                onChange={handleBoxUnitsChange}
-                list="box-options"
-            />
             <datalist id="box-options">
                 {options.map((option, index) => (
                     <option key={index} value={option} />
