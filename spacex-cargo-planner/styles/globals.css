@@ -8,11 +8,11 @@ body {
 
 td {
   width: 2%;
-  border-radius: 10px;
+  border-radius: 10em;
 }
 
 tr {
-  width: 269px;
+  width: 16.8125em;
   height: 30px;
   
   overflow-y: auto;
@@ -22,25 +22,27 @@ tr {
 
 .spacex-logo {
   position: absolute;
-  width: 212px;
-  height: 42px;
-  left: 40px;
-  top: 40px;
+  width: 13.25em;
+  height: 2.625em;
+  left: 2.5em;
+  top: 2.5em;
+
+  background-color: #979797;
 }
 
 .search {
   position: absolute;
-  width: 320px;
-  height: 50px;
-  left: 360px;
-  top: 40px;
+  width: 20em;
+  height: 3.125em;
+  left: 27em;
+  top: 2.9em;
 
   border-radius: 10px;
 }
 
 h1 {
-  width: 250px;
-  height: 38px;
+  width: 15.625em;
+  height: 1em;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   
 }
@@ -51,11 +53,11 @@ h1 {
 
 .input {
   position: absolute;
-  width: 320px;
-  height: 50px;
-  left: 51px;
-  top: 192px;
-  right: 665px;
+  width: 20em;
+  height: 3.1em;
+  left: 3.777em;
+  top: 15em;
+  right: 41em;
   bottom: 609px;
   border-radius: 10px;
 }
@@ -82,6 +84,7 @@ color: #979797;
 
 
 }
+
 
 .Cargo-Boxes {
 /* Roboto body text */
