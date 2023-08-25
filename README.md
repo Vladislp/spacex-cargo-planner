@@ -36,7 +36,7 @@ npm run dev
 ## Technologies Used
 1) React
 2) Next.js
-3) HTML5 $ CSS3
+3) HTML5 & CSS3
 4) Javascript(ES6+)
 
 ## Contributing
