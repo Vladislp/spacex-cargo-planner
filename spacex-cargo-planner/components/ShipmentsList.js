@@ -10,7 +10,7 @@ const ShipmentList = () => {
     const filteredShipments = shipments.filter((shipment) =>
         shipment.name.toLowerCase().includes(searchQuary.toLowerCase())
     );
-
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch('/shipment.json');
@@ -25,11 +25,29 @@ const ShipmentList = () => {
         const selected = shipments.find((shipment) => shipment.id === id);
         setSelectedShipment(selected);
         setSearchQuary("");
+
+        setShowMobileMenu(false);
+    };
+
+    const handleHamburgerClick = () => {
+        setSelectedShipmentId(null);
+        setSelectedShipment(null);
+        setShowMobileMenu(!showMobileMenu);
     };
 
     return (
         
+        
         <div className="shipment-list-container">
+            <div className="mobile-app">
+                <div className="header">
+                    <div className="hamburger-icon" onClick={handleHamburgerClick}>
+                        <div className="line"></div>
+                        <div className="line"></div>
+                        <div className="line"></div>
+                    </div>
+                </div>
+            </div>
             <img className='spacex-logo' src="/logo.svg" alt="Logo" />
                 <input
                     type="search"
@@ -40,22 +58,24 @@ const ShipmentList = () => {
                     placeholder="Search"
                 />
                 
-            <table> 
-                <tbody>
-                    {filteredShipments.map((shipment) => (
-                        <tr
-                            key={shipment.id}
-                            onClick={() => handleRowClick(shipment.id)}
-                            style={{
-                                color: selectedShipmentId === shipment.id ? 'white' : 'silver',
-                            }}
-                            className={`${selectedShipmentId === shipment.id ? 'selected' : ''} tr-hover`}
-                        >
-                            <td>{shipment.name}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            {showMobileMenu ? (
+                <table> 
+                    <tbody>
+                        {filteredShipments.map((shipment) => (
+                            <tr
+                                key={shipment.id}
+                                onClick={() => handleRowClick(shipment.id)}
+                                style={{
+                                    color: selectedShipmentId === shipment.id ? 'white' : 'silver',
+                                }}
+                                className={`${selectedShipmentId === shipment.id ? 'selected' : ''} tr-hover`}
+                            >
+                                <td>{shipment.name}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            ) : null}
             {selectedShipment && <ShipmentDetails shipment={selectedShipment} />}
         </div>
     );
