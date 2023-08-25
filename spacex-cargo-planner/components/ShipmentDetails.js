@@ -7,7 +7,7 @@ const ShipmentDetails = ({ shipment }) => {
 
     // Calculate cargo bays with white color
     const cargoBays = (
-        <span style={{ color: 'white '}}>
+        <span className='Cargo-Bays-Total' style={{ color: 'white '}}>
             {calculateCargoBays(boxUnits)}
         </span>
     )
@@ -43,7 +43,6 @@ const ShipmentDetails = ({ shipment }) => {
                     <option key={index} value={option} />
                 ))}
             </datalist>
-
             {/* Rectangle container */}
             <div className='rectangle'>
                 <p className='shipment-name'>{shipment.name}</p>

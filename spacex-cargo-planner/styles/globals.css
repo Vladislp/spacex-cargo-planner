@@ -40,6 +40,20 @@ tr {
   border-radius: 10px;
 }
 
+.rectangle {
+  position: absolute;
+  width: 46.8%;
+  height: 42em; /* 851px */
+  left: 16.3%; /* 360px  16.4% */
+  top: 122px; /* 122px */
+  z-index: 0;
+  
+  background: linear-gradient(124.01deg, #2D3038 0%, rgba(45, 48, 56, 0) 100%);
+  border-radius: 30px;
+}
+
+
+
 h1 {
   width: 15.625em;
   height: 1em;
@@ -108,29 +122,6 @@ color: #979797;
 
 }
 
-.shipment-list {
-  position: absolute;
-  width: 26.37%; /* (270 / 1024) * 100 */
-  height: 25.65%; /* (197 / 768) * 100 */
-  left: 3.91%; /* (40 / 1024) * 100 */
-  top: 15.89%; /* (122 / 768) * 100 */
-  z-index: 1;
-
-  border-radius: 10px;
-}
-
-
-.rectangle {
-  position: absolute;
-  width: 46.8%;
-  height: 20000%; /* 851px */
-  left: 16.3%; /* 360px  16.4% */
-  top: 122px; /* 122px */
-  z-index: 0;
-  
-  background: linear-gradient(124.01deg, #2D3038 0%, rgba(45, 48, 56, 0) 100%);
-  border-radius: 30px;
-}
 
 tbody {
   position: absolute;
@@ -186,3 +177,104 @@ tbody {
   color: #979797;
 }
 
+
+/* Media query for phones */
+@media only screen and (max-width: 812px) {
+  .spacex-logo {
+    width: 9.5em;
+    height: 2em;
+    top: 1em;
+    left: 1em;
+  }
+
+  .search {
+    width: 335px;
+    height: 40px;
+    top: 80px;
+    Left: 0.5em;
+  }
+
+  .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+  }
+
+  .rectangle {
+    width: 335px;
+    height: 633px;
+    Top: 150px;
+    Left: 0.5em;
+    border-radius: 20px;
+  }
+  .hamburger-icon {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+  .shipment-list {
+    display: none;
+  }
+
+  .shipment-name {
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 38px; /* 135.714% */
+    left: 0.5em;
+  }
+
+  .shipment-email {
+    display: flex;
+    width: 170px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    left: 3.1em;
+    top: 3em;
+  }
+
+  .Required-Cargo {
+    color: #979797;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 111.111% */
+    left: 2em;
+    top: 12.5em;
+  }
+
+  .Cargo-Boxes {
+    display: flex;
+    width: 170px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    left: -1em;
+    top: 6.5em;
+  }
+  
+  .input {
+    width: 305px;
+    height: 40px;
+    left: 0.777em;
+    top: 11.5em;
+  }
+
+  .Cargo-Bays-Total {
+    top: 5em;
+  }
+
+  tbody {
+    top: 12em;
+  }
+}
