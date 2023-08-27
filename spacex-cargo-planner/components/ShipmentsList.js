@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ShipmentDetails from './ShipmentDetails';
-import { FaSearch } from 'react-icons/fa';
 
 const ShipmentList = () => {
     const [shipments, setShipments] = useState([]);
@@ -36,8 +35,6 @@ const ShipmentList = () => {
     };
 
     return (
-        
-        
         <div className="shipment-list-container">
             <div className="mobile-app">
                 <div className="header">
@@ -57,6 +54,23 @@ const ShipmentList = () => {
                     list="box-options"
                     placeholder="Search"
                 />
+
+                <table> 
+                    <tbody>
+                        {filteredShipments.map((shipment) => (
+                            <tr
+                                key={shipment.id}
+                                onClick={() => handleRowClick(shipment.id)}
+                                style={{
+                                    color: selectedShipmentId === shipment.id ? 'white' : 'silver',
+                                }}
+                                className={`${selectedShipmentId === shipment.id ? 'selected' : ''} tr-hover`}
+                            >
+                                <td>{shipment.name}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
                 
             {showMobileMenu ? (
                 <table> 
