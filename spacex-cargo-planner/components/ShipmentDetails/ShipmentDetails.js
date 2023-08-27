@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { calculateCargoBays } from '../utils/cargoUtils';
+import { calculateCargoBays } from '../../utils/cargoUtils';
 
 const ShipmentDetails = ({ shipment }) => {
     // State for box units and cargo bays
     const [boxUnits, setBoxUnits] = useState(shipment.boxes);
-
-    // Calculate cargo bays with white color
-    const cargoBays = (
-        <span className='Cargo-Bays-Total' style={{ color: 'white '}}>
-            {calculateCargoBays(boxUnits)}
-        </span>
-    )
 
     // Update boxUnits and cargo bays when the shipment prop changes
     useEffect(() => {
@@ -22,18 +15,23 @@ const ShipmentDetails = ({ shipment }) => {
     }, [shipment]);
     
 
-
+    // Handler for box units change
+    const handleBoxUnitsChange = (event) => {
+        const newBoxUnits = event.target.value;
+        setBoxUnits(newBoxUnits);
+    };
 
     // Parse shipment boxes into options
     const options = shipment.boxes
         ? shipment.boxes.split(',').map(box => box.trim()).filter(box => box !== 'null')
         : [];
 
-    // Handler for box units change
-    const handleBoxUnitsChange = (event) => {
-        const newBoxUnits = event.target.value;
-        setBoxUnits(newBoxUnits);
-    };
+    // Calculate cargo bays with white color
+    const cargoBays = (
+        <span className='Cargo-Bays-Total' style={{ color: 'white '}}>
+            {calculateCargoBays(boxUnits)}
+        </span>
+    )
 
     return (
         <div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import RectangleComponent from '../components/Rectangle';
-import ShipmentList from '../components/ShipmentsList';
+import RectangleComponent from '../components/Rectangle/Rectangle';
+import ShipmentList from '../components/ShipmentsList/ShipmentsList';
 
 const Home = () => {
     return (
