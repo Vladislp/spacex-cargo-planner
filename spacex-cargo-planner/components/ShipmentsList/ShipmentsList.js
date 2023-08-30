@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ShipmentDetails from '../ShipmentDetails/ShipmentDetails';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import SearchIcon from '@mui/icons-material/Search';
 
 const generateRows = (shipments, selectedShipmentId, handleRowClick) => {
   return shipments.map((shipment) => (
@@ -71,17 +72,19 @@ const ShipmentList = () => {
         className='input'
         id="search-autocomplete"
         options={shipments.map((shipment) => shipment.name)}
-        value={searchQuary}
+        value={searchQuary || "Apple"}
         onChange={(event, newValue) => setSearchQuary(newValue)}
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Search"
             margin="normal"
             variant="outlined"
             InputProps={{
               ...params.InputProps,
               type: 'search',
+              startAdornment: (
+                <SearchIcon color=""  />
+              ),
             }}
             sx={{
               height: '3.1em',
@@ -89,7 +92,7 @@ const ShipmentList = () => {
               top: '-13.7em', 
               right: '1em',
               bottom: '1em', 
-              borderRadius: '10px',
+              borderRadius: '1rem',
               backgroundColor: 'white',
               '@media (max-width: 768px)': {
                 width: '100%',
