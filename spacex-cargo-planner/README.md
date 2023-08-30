@@ -1,11 +1,21 @@
-## Known issues
+# Known issues
 
-- A lot of issues with the UI in all screen sizes.
-- Functionality is mostly fine with minor issues.
-- Styles are not encapsulated inside components.
-- A lot of code duplication
-- td elements are used instead of anchor tags which is not correct
-- no a11y
-- A lot of unnecessary state is used
-- No tests
+### A lot of issues with the UI in all screen sizes.
+  TODO
+### Functionality is mostly fine with minor issues.
+  TODO
+### Styles are not encapsulated inside components.
+  TODO
+### A lot of code duplication
+      
+* That's what happen, when you to deep in to project. Can't even notice this type of stuff. Found similar code in two files, which of course i use only one of them.
+
+### td elements are used instead of anchor tags which is not correct
+  TODO
+### no a11y
+  TODO
+### A lot of unnecessary state is used
+  TODO
+### No tests
+  TODO
 Pay attention to code quality - use React + TS best practices (I recommend checking this cheatsheet https://react-typescript-cheatsheet.netlify.app/docs/basic/setup)
