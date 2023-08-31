@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { calculateCargoBays } from '../../utils/cargoUtils';
 
 const ShipmentDetails = ({ shipment }) => {
     // State for box units and cargo bays
     const [boxUnits, setBoxUnits] = useState(shipment.boxes);
+    const inputRef = useRef(null);
 
     // Update boxUnits and cargo bays when the shipment prop changes
     useEffect(() => {
@@ -13,6 +14,12 @@ const ShipmentDetails = ({ shipment }) => {
             setBoxUnits("");
         }
     }, [shipment]);
+
+    useEffect(() => {
+        if(inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [boxUnits]);
     
 
     // Handler for box units change
@@ -51,10 +58,15 @@ const ShipmentDetails = ({ shipment }) => {
                 </p>
                 {/* Input for box units */}
                 <input
+                    ref={inputRef}  
                     type="text"
                     className='input'
                     value={boxUnits}
                     onChange={handleBoxUnitsChange}
+                    // ARIA attributes
+                    aria-label="Number of box units"
+                    aria-required="true"
+                    aria-describedby='box-units-description'
                 />
             </div>
         </div>

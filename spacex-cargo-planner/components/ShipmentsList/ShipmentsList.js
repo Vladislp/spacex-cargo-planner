@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ShipmentDetails from '../ShipmentDetails/ShipmentDetails';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -13,11 +13,31 @@ const generateRows = (shipments, selectedShipmentId, handleRowClick) => {
         color: selectedShipmentId === shipment.id ? 'white' : 'silver',
       }}
       className={`${selectedShipmentId === shipment.id ? 'selected' : ''} tr-hover`}
+      /*
+        ARIA Labels
+           1) We can add "aria-selected" attribute to indicate the selected state.
+           2) Additionally, we can use "aria-labelleby" to associate a hidden label with each row that provides context.
+      */
+      aria-selected={selectedShipmentId === shipment.id}
+      aria-labelleby={'shipment-name-${shipment.id}'}
     >
       <td>
-        <a style={{ color: selectedShipmentId === shipment.id ? 'white' : 'silver' }}>
+        <button
+          style={{
+            color: selectedShipmentId === shipment.id ? 'white' : 'silver',
+            border: 'none',
+            background: 'none',
+            cursor: 'pointer',
+          }}
+          onClick={() => handleRowClick(shipment.id)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+            handleRowClick(shipment.id);
+          }
+          }}
+        >
           {shipment.name}
-        </a>
+        </button>
       </td>
     </tr>
   ));
@@ -32,6 +52,7 @@ const ShipmentList = () => {
     shipment.name.toLowerCase().includes(searchQuary.toLowerCase())
   );
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,30 +77,69 @@ const ShipmentList = () => {
     setShowMobileMenu(!showMobileMenu);
   };
 
+  const handleSearchChange = (event, newValue) => {
+    if (newValue.length < 3) {
+      setSearchError("Search query must be at least 3 characters.");
+    } else {
+      setSearchError("");
+    }
+    setSearchQuary(newValue);
+  };
+
+  useEffect(() => {
+    const handleSearchShortcut = (event) => {
+      if (event.key === '/') {
+        inputRef.current.focus();
+        event.preventDefault();
+      }
+    };
+  
+    // Attach the event listener when the component mounts
+    document.addEventListener('keydown', handleSearchShortcut);
+  
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('keydown', handleSearchShortcut);
+    };
+  }, []);
+  
+
   return (
     <div className="shipment-list-container">
       <div className="mobile-app">
-        <div className="header">
-          <div className="hamburger-icon" onClick={handleHamburgerClick}>
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
+        <div className='nav'>
+          <div className="header">
+            <div className="hamburger-icon" onClick={handleHamburgerClick}>
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+            </div>
           </div>
         </div>
       </div>
-      <img className='spacex-logo' src="/logo.svg" alt="Logo" />
+      <img className='spacex-logo' src="/logo.svg" alt="This is logo for a SpaceX company application called: 'Cargo Planner' "/>
       <Autocomplete
         className='input'
         id="search-autocomplete"
         options={shipments.map((shipment) => shipment.name)}
         value={searchQuary || "Apple"}
         onChange={(event, newValue) => setSearchQuary(newValue)}
+        inputRef={inputRef}
+        inputProps={{
+          'aria-label': 'Search for a shipment',
+        }}
         renderInput={(params) => (
           <TextField
             {...params}
             margin="normal"
             variant="outlined"
+            inputRef={params.InputProps.ref}
             InputProps={{
+              // ARIA Labels
+              'aria-label': 'Search for a shipment',
+              'aria-autocomplete': 'list',
+              'aria-haspopup': 'listbox',
+
               ...params.InputProps,
               type: 'search',
               startAdornment: (
@@ -103,7 +163,6 @@ const ShipmentList = () => {
           />
         )}
       />
-
       <table>
         <tbody>
           {generateRows(filteredShipments, selectedShipmentId, handleRowClick)}
