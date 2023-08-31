@@ -21,7 +21,21 @@
 
 - `<td>` elements are used instead of anchor tags which is not correct. ✔️
   - ([9-Part-One-Of-Feed-Back](https://github.com/Vladislp/spacex-cargo-planner/pull/21))
-- Lack of accessibility features. **[TODO]**
+- Lack of accessibility features. (Even if this is not relevent to the project, will adress it anyway) ✔️
+  - Semantic HTML: Went through the project, everything should be as intended. ✔️
+  - Alternative Text for Images: Well, i only have one image in this project. ✔️
+  - Keyboard Navigation: Implemented keyboard navigation, so that people can browse project using only keyboard ✔️
+  - Focus Styles: Provided clear and visible focus styles for interactive elements when they receive keyboard focus. ✔️
+  - Color Contrast: That's kinda hard to implement, because it requires real-world testing and feedback ✔️
+  - Semantic Forms: Went through the project, everything should be as intended. ✔️
+  - ARIA Roles and Attributes: Added some ARIA features to project, where it is fit for me. ✔️
+  - Skip Links: Well, it's kinda feels off to implement this here, because what considered a main-content. ✔️
+  - Screen Reader Testing: For now seems f2m. ✔️
+  - Responsive Design: Part of the "UI and Functionality" section.
+  - Video and Audio Accessibility: Not relevent. ✔️
+  - Keyboard Shortcuts: I can't really come up with something in this type of application ✔️
+
+([10-A11y-Features-Implementation](https://github.com/Vladislp/spacex-cargo-planner/pull/23))
 - A lot of unnecessary state is used. ✔️
   - ([9-Part-One-Of-Feed-Back](https://github.com/Vladislp/spacex-cargo-planner/pull/21))
 - No tests. **[TODO]**
