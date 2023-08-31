@@ -46,6 +46,26 @@ tr {
   border-radius: 10px;
 }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 112rem;
+  background-color: #FFF;
+  padding: 10px;
+  color: #000;
+  text-decoration: none;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .rectangle {
   position: absolute;
   width: 46.8%;
@@ -160,7 +180,8 @@ tbody {
   line-height: 74px;
   /* identical to box height, or 116% */
 
-  color: #FFFFFF;
+  color: #FFF;
+  background-color: linear-gradient(124.01deg, #2D3038 0%, rgba(45, 48, 56, 0) 100%);;
 }
 
 .shipment-email {
